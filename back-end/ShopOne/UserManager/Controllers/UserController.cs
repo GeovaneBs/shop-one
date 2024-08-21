@@ -25,8 +25,7 @@ namespace UserManager.Controllers
             return await _userManagerDbContext.User.ToListAsync();
         }
 
-        [HttpGet("{id}")]
-        [Authorize]
+        [HttpGet("{id}")]       
         public IActionResult GetById(int id)
         {
             var product = _userManagerDbContext.User.SingleOrDefault(p => p.Id == id);
