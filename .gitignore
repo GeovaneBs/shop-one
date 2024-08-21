@@ -360,6 +360,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-/back-end/GestPec/UserManager/UserManager.db
-/back-end/GestPec/UserManager/UserManager.db-shm
+/back-end/ShopOne/UserManager/UserManager.db
+/back-end/ShopOne/UserManager/UserManager.db-shm
 *.db-wal
