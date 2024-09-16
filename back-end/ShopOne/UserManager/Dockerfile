@@ -7,10 +7,10 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["UserManager/UserManager.csproj", "UserManager/"]
-RUN dotnet restore "UserManager/UserManager.csproj"
+COPY ["UserManager.csproj", ""]
+RUN dotnet restore "UserManager.csproj"
 COPY . .
-WORKDIR "/src/UserManager"
+WORKDIR "/src"
 RUN dotnet build "UserManager.csproj" -c Release -o /app/build
 
 FROM build AS publish

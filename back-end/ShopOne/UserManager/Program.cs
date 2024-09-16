@@ -16,10 +16,6 @@ builder.Services.AddCors(options =>
             .AllowCredentials());
 });
 
-builder.WebHost.ConfigureKestrel(serverOptions =>
-{
-    serverOptions.ListenAnyIP(5000); // Porta 5000
-});
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -35,7 +31,6 @@ using (var scope = app.Services.CreateScope())
     db.Database.Migrate();
 }
 
-// Habilite o CORS antes do MapControllers
 app.UseCors("AllowSpecificOrigin");
 
 app.UseSwagger();
