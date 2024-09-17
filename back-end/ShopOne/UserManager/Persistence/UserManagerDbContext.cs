@@ -13,7 +13,10 @@ namespace UserManager.Persistence
         public DbSet<UserModel> User { get; set; }
         public DbSet<PropertyModel> Property { get; set; }
 
+        // protected override void OnConfiguring(DbContextOptionsBuilder options)
+        // => options.UseSqlite($"Data Source={Path.Combine(Environment.CurrentDirectory, "UserManager.db")}");
+
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-        => options.UseSqlite($"Data Source={Path.Combine(Environment.CurrentDirectory, "UserManager.db")}");
+        => options.UseSqlite($"Data Source={"C://UserManager.db"}");
     }
 }
