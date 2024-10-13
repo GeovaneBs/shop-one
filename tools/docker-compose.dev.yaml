@@ -1,0 +1,35 @@
+version: '3.3'  # Especifica a versão do Docker Compose
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server
+    container_name: sqlserver
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=P@ssw0rd
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+  product-api:
+    container_name: product-api
+    image: geovaneb/api-estudo-devops:latest
+    build:
+      context: ../back-end/ShopOne/ProductManager 
+      dockerfile: Dockerfile
+    environment:
+      - Allowed_Origins=http://product-portal/
+    ports:
+      - "5000:80"
+  product-portal:
+    container_name: product-portal
+    image: geovaneb/front-estudo-devops:latest
+    build:
+      context: ../front-end-react/product-manager-frontend
+      dockerfile: Dockerfile
+    environment:
+      - REACT_APP_API_URL=http://product-api/
+    ports:
+      - "3000:80"
+volumes:
+  sqlserver_data:

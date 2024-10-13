@@ -37,7 +37,7 @@ builder.Services.AddDbContext<ProductManagerDbContext>(options =>
 
 
 var app = builder.Build();
-
+app.MigrateDatabase<ProductManagerDbContext>();
 app.UseCors("AllowSpecificOrigin");
 
 app.UseSwagger();
